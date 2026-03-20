@@ -1,18 +1,18 @@
+import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         System.out.println("=======================================");
-        System.out.println(" UC4 - Maintain Ordered Bogie IDs ");
+        System.out.println(" UC5 - Preserve Insertion Order of Bogies ");
         System.out.println("=======================================\n");
 
-        // Create TreeSet (sorted + unique)
-        Set<String> trainConsist = new TreeSet<>();
+        // Create LinkedHashSet (insertion order + unique)
+        Set<String> trainConsist = new LinkedHashSet<>();
 
-        // Add bogies (unordered input + duplicates)
+        // Add bogies (with duplicates)
         trainConsist.add("B3");
         trainConsist.add("B1");
         trainConsist.add("B4");
@@ -20,9 +20,9 @@ public class TrainConsistManagementApp {
         trainConsist.add("B1"); // duplicate
 
         // Display results
-        System.out.println("Bogies added (auto-sorted, duplicates removed).\n");
+        System.out.println("Bogies added (insertion order preserved, duplicates removed).\n");
 
-        System.out.println("Ordered Train Consist:");
+        System.out.println("Train Consist (Insertion Order):");
         for (String bogie : trainConsist) {
             System.out.println(bogie);
         }
