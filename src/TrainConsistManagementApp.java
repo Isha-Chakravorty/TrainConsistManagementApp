@@ -1,33 +1,36 @@
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         System.out.println("=======================================");
-        System.out.println(" UC5 - Preserve Insertion Order of Bogies ");
+        System.out.println(" UC6 - Map Bogie to Capacity ");
         System.out.println("=======================================\n");
 
-        // Create LinkedHashSet (insertion order + unique)
-        Set<String> trainConsist = new LinkedHashSet<>();
+        // Create HashMap (Bogie -> Capacity)
+        Map<String, Integer> trainCapacityMap = new HashMap<>();
 
-        // Add bogies (with duplicates)
-        trainConsist.add("B3");
-        trainConsist.add("B1");
-        trainConsist.add("B4");
-        trainConsist.add("B2");
-        trainConsist.add("B1"); // duplicate
+        // Add bogies with capacity
+        trainCapacityMap.put("B1", 72);
+        trainCapacityMap.put("B2", 72);
+        trainCapacityMap.put("B3", 72);
+        trainCapacityMap.put("B4", 72);
 
-        // Display results
-        System.out.println("Bogies added (insertion order preserved, duplicates removed).\n");
+        // Display bogie capacities
+        System.out.println("Bogie Capacity Mapping:\n");
 
-        System.out.println("Train Consist (Insertion Order):");
-        for (String bogie : trainConsist) {
-            System.out.println(bogie);
+        for (Map.Entry<String, Integer> entry : trainCapacityMap.entrySet()) {
+            System.out.println("Bogie: " + entry.getKey() + " -> Capacity: " + entry.getValue());
         }
 
-        // Display total count
-        System.out.println("\nTotal Bogies: " + trainConsist.size());
+        // Total capacity calculation
+        int totalCapacity = 0;
+        for (int capacity : trainCapacityMap.values()) {
+            totalCapacity += capacity;
+        }
+
+        System.out.println("\nTotal Train Capacity: " + totalCapacity);
     }
 }
