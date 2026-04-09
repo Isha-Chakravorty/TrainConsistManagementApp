@@ -1,36 +1,32 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TrainConsistManagementApp {
 
+    static class Bogie {
+        String name;
+        int capacity;
+
+        Bogie(String name, int capacity) {
+            this.name = name;
+            this.capacity = capacity;
+        }
+
+        public String toString() {
+            return name + " (" + capacity + ")";
+        }
+    }
+
     public static void main(String[] args) {
 
-        System.out.println("=======================================");
-        System.out.println(" UC6 - Map Bogie to Capacity ");
-        System.out.println("=======================================\n");
+        System.out.println("UC7: Sorting Bogies");
 
-        // Create HashMap (Bogie -> Capacity)
-        Map<String, Integer> trainCapacityMap = new HashMap<>();
+        List<Bogie> bogies = new ArrayList<>();
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 60));
+        bogies.add(new Bogie("First Class", 40));
 
-        // Add bogies with capacity
-        trainCapacityMap.put("B1", 72);
-        trainCapacityMap.put("B2", 72);
-        trainCapacityMap.put("B3", 72);
-        trainCapacityMap.put("B4", 72);
+        bogies.sort((b1, b2) -> b2.capacity - b1.capacity);
 
-        // Display bogie capacities
-        System.out.println("Bogie Capacity Mapping:\n");
-
-        for (Map.Entry<String, Integer> entry : trainCapacityMap.entrySet()) {
-            System.out.println("Bogie: " + entry.getKey() + " -> Capacity: " + entry.getValue());
-        }
-
-        // Total capacity calculation
-        int totalCapacity = 0;
-        for (int capacity : trainCapacityMap.values()) {
-            totalCapacity += capacity;
-        }
-
-        System.out.println("\nTotal Train Capacity: " + totalCapacity);
+        System.out.println(bogies);
     }
 }
